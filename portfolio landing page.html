@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" ,initial-scale="1.0">
+    <meta name="description" content="portfolio landing page">
+    <meta name="keywords" content="html,css,c#,js,php">
+    <title>portfolio landing page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(to right, #8360c3, #2ebf91);
+            color: #fff;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        #home {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 100px 20px 50px;
+        }
+
+        #home img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        #home h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        #home h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        #home p {
+            max-width: 600px;
+            margin: 15px auto;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #2ebf91;
+            color: #fff;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1a9c75;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ffd700;
+        }
+
+        section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            #home h1 {
+                font-size: 2rem;
+            }
+
+            #home h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+            transition: 0.3s ease;
+        }
+
+        .profile-pic {
+            width: 180px;
+            /* حجم الصورة */
+            height: 180px;
+            border-radius: 50%;
+            /* تخليها دايرة */
+            object-fit: cover;
+            /* يظبط مقاس الصورة */
+            object-position: 0 10%;
+            /* يخلي الصورة تنزل لتحت (20% تقدر تزودها أو تقللها حسب الحاجة) */
+            border: 4px solid #fff;
+            /* برواز أبيض شكله شيك */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* ظل خفيف */
+        }
+
+        #about {
+            background: #fff;
+            color: #333;
+            padding: 80px 20px;
+        }
+
+        #about h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        #about p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 1.1rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #contact {
+            background: #222;
+            color: #fff;
+            padding: 80px 20px;
+        }
+
+        #contact h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            margin: 10px 0;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .contact-form button {
+            background: #2ebf91;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background: #1a9c75;
+        }
+
+        /* ===== Skills Section ===== */
+        #skills {
+            background: linear-gradient(to right, #8360c3, #2ebf91);
+            padding: 80px 20px;
+            color: #333;
+        }
+
+        #skills h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+
+        #skills pre {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            /* يخلي الكلام يكسر بدل ما يطلع Scroll */
+            word-wrap: break-word;
+            max-width: 900px;
+            margin: auto;
+            color: #444;
+            border-left: 6px solid #2ebf91;
+        }
+
+        /* ===== Projects Section ===== */
+        #projects {
+            background: #fff;
+            padding: 80px 20px;
+            color: #333;
+        }
+
+        #projects h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+
+        /* Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* Project Card */
+        .project-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .project-card .btn {
+            background-color: #2ebf91;
+            padding: 10px 18px;
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .project-card .btn:hover {
+            background-color: #1a9c75;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="home">
+        <h2>Welcome to my Portfolio</h2>
+        <img src="c:\Users\Azqoul\Downloads\Gemini_Generated_Image_65pcch65pcch65pc (1).png" alt="Mohamed Ahmed"
+            width="200" height="200" class="profile-pic">
+        <h1>Hello, I'm Mohamed Ahmed Abdelrahim</h1>
+        <h3>Backend Developer</h3>
+        <p>
+            I'm a Backend developer professional prepared to bring valuable experience
+            and impact in the role. Known for delivering efficient server-side solutions
+            and optimizing performance.
+        </p>
+        <a href="c:\Users\Azqoul\OneDrive\Desktop\Mohamed Ahmed Abdelrahim.pdf" class="btn">Download CV</a>
+
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=100006982128386&ref=_ig_profile_ac"><i
+                    class="fab fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/mohamed-ahmed-abdelrahim-36b95124b"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/MohamedBayoud23"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>
+                I'm Mohamed Ahmed, a Backend Developer with strong experience in C#, .NET,
+                and building APIs. Passionate about writing clean code and delivering
+                optimized backend solutions.
+            </p>
+        </div>
+    </section>
+    <section id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <pre>Programming & Backend: C#, .NET 6, ASP.NET Core, MVC, Web API, RESTful Services, LINQ 
+                 Version Control: Git, GitHub 
+                 Database & ORM: SQL Server, Entity Framework Core (EF Core), Code First, Migrations 
+                 API & Security: JWT Authentication & Authorization, API Design & Documentation 
+                 Software Engineering: OOP,Design Patterns, Data Structures, Problem Solving 
+                 Deployment & Tools: Web Deploy, Publish Profiles, Cloud Computing Basics
+                 Frontend Basics: HTML, CSS  Other Knowledge: AI/ML (Basic), Communication Technology, CCNA</pre>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <img src="c:\Users\Azqoul\OneDrive\Pictures\Screenshots\Screenshot (242).png" alt="Project 1"
+                        width="800" height="500"><br>
+                    <h3>Recommendation System For Travel</h3>
+                    <p>System for providing travel recommendations using .NET Web APIs.</p>
+                    <a href="https://github.com/Mohamedbayoud7/Recommendation-System-For-Travel.git" target="_blank"
+                        class="btn">View Project</a>
+                    <a href="c:\Users\Azqoul\OneDrive\Desktop\GP Video Demo.mp4" target="_blank" class="btn">View
+                        Project Demo</a>
+                </div><br>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img src="c:\Users\Azqoul\OneDrive\Pictures\Screenshots\Screenshot (313).png" alt="Project 2"
+                        width="800" height="500"><br>
+                    <h3>Semantic Web Application</h3>
+                    <p>Job Matching Ontology for Semantic Job Recommendation</p>
+                    <a href="c:\Users\Azqoul\Downloads\Protege-5.6.5" target="_blank" class="btn">View
+                        Project</a>
+                </div><br>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <img src="c:\Users\Azqoul\OneDrive\Pictures\Screenshots\Screenshot (312).png" alt="Project 3"
+                        width="800" height="500"><br>
+                    <h3>Snake Game</h3>
+                    <p>A classic Snake game built with C++ and Unity.</p>
+                    <a href="c:\Users\Azqoul\Downloads\Telegram Desktop\VID-20230514-WA0061 (1) (2).mp4" target="_blank"
+                        class="btn">View Project</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out to me through the form below or via my social links.</p>
+
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <p><strong>Email:</strong> mohamedbayoud237@gmail.com</p>
+                <p><strong>Location:</strong> Assiut, Egypt</p>
+            </div>
+
+            <!-- Contact Form -->
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+
+            <!-- Social Links -->
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=100006982128386&ref=_ig_profile_ac"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/mohamed-ahmed-abdelrahim-36b95124b"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/MohamedBayoud23"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</body>
+
+</html>
